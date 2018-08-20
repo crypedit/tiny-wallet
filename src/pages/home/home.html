@@ -1,17 +1,36 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      观察钱包
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content padding>
-  <div class="content-container">
-    <ion-item>
-      <ion-label floating>Transaction/Address</ion-label>
-      <ion-input type="text" [(ngModel)]="hash"></ion-input>
-    </ion-item>
-    <button ion-button class="btn-submit" (click)="submit()">查询</button>
-  </div>
+<ion-content style="background-color: #f5f5f5;">
+  <ion-grid class="grid-container">
+    <ion-row class="header">
+      <ion-col col-12 class="header-content">
+        <ion-col col-12 class="title">
+          <div>我的钱包</div>
+        </ion-col>
+        <ion-col col-12 class="detail">
+          <div class="amount-of-coin">1000 ETH</div>
+          <div class="amount-of-usd">10000 USD</div>
+          <div class="amount-of-wallet">钱包总额</div>
+        </ion-col>
+      </ion-col>
+      <ion-col col-12 class="header-buttons">
+        <ion-col col-6 class="button-container left">
+          <button ion-button color="light" class="button">转入</button>
+        </ion-col>
+        <ion-col col-6 class="button-container right">
+          <button ion-button color="light" class="button">转出</button>
+        </ion-col>
+      </ion-col>
+    </ion-row>
+    <div class="navigation-list">
+      <ion-list>
+        <button ion-item (click)="goTo()">转账明细</button>
+      </ion-list>
+      <ion-list>
+        <button ion-item>我的Token</button>
+        <button ion-item>P2B 10000</button>
+      </ion-list>
+      <ion-list>
+        <button ion-item>支付设置</button>
+      </ion-list>
+    </div>
+  </ion-grid>
 </ion-content>
