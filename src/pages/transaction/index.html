@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      转账记录
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div class="content-container">
+    <ion-item>
+      <div class="transaction" *ngFor="let tx of (txs | async)?.result"
+       (click)="gotoDetail(tx)" class="result" >
+       {{tx.hash}}
+      </div>
+    </ion-item>
+  </div>
+</ion-content>

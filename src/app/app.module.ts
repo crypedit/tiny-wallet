@@ -7,14 +7,27 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { QueryPage } from './../pages/query/query';
+import { TransactionsPage } from './../pages/transaction/index';
 import { ApiProvider } from '../providers/api/api';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
 
 @NgModule({
-  declarations: [MyApp, HomePage, QueryPage],
+  declarations:
+  [
+    MyApp,
+    QueryPage,
+    TransactionsPage,
+    HomePage
+  ],
   imports: [BrowserModule, IonicModule.forRoot(MyApp), HttpClientModule],
   bootstrap: [IonicApp],
-  entryComponents: [MyApp, HomePage, QueryPage],
+  entryComponents:
+  [
+    MyApp,
+    QueryPage,
+    TransactionsPage,
+    HomePage
+  ],
   providers: [
     StatusBar,
     SplashScreen,

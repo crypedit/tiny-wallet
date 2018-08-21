@@ -1,22 +1,28 @@
+import 'rxjs/Rx';
+import { Observable } from "rxjs/Observable";
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ApiProvider } from '../../providers/api/api';
-import { QueryPage } from '../query/query';
+import { TransactionsPage } from '../transaction/index';
+import * as Ethers from 'ethers';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  hash: string;
+  balance: Observable<number>;
 
-  constructor(public navCtrl: NavController, private api: ApiProvider) {}
-
-  submit() {
-    this.api.queryTXOrAddress(this.hash);
+  constructor(public navCtrl: NavController, private api: ApiProvider) {
+    this.subscribeObservable();
   }
 
-  goTo() {
-    this.navCtrl.push(QueryPage);
+  goToTransactions() {
+    this.navCtrl.push(TransactionsPage);
+  }
+
+  subscribeObservable() {
+    this.balance = this.api.queryBalanceByAddress('0x5c47e30dc7f82167de8865aac3914ce927c15918')
+          .map((v)=>Ethers.utils.formatEther(Ethers.utils.bigNumberify(v.result)))
   }
 }
