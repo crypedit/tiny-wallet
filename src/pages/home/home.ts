@@ -3,7 +3,7 @@ import { Observable } from "rxjs/Observable";
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ApiProvider } from '../../providers/api/api';
-import { TransactionsPage } from '../transaction/index';
+import { TransactionIndex } from '../transaction/index';
 import * as Ethers from 'ethers';
 
 @Component({
@@ -18,7 +18,7 @@ export class HomePage {
   }
 
   goToTransactions() {
-    this.navCtrl.push(TransactionsPage);
+    this.navCtrl.push(TransactionIndex);
   }
 
   subscribeObservable() {

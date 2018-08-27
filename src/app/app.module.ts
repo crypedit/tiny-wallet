@@ -6,8 +6,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { QueryPage } from './../pages/query/query';
-import { TransactionsPage } from './../pages/transaction/index';
+import { TransactionIndex } from './../pages/transaction/index';
+import { TransactionPage } from './../pages/transaction/page';
 import { ApiProvider } from '../providers/api/api';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
 
@@ -15,8 +15,8 @@ import { HttpClientModule } from '../../node_modules/@angular/common/http';
   declarations:
   [
     MyApp,
-    QueryPage,
-    TransactionsPage,
+    TransactionIndex,
+    TransactionPage,
     HomePage
   ],
   imports: [BrowserModule, IonicModule.forRoot(MyApp), HttpClientModule],
@@ -24,8 +24,8 @@ import { HttpClientModule } from '../../node_modules/@angular/common/http';
   entryComponents:
   [
     MyApp,
-    QueryPage,
-    TransactionsPage,
+    TransactionIndex,
+    TransactionPage,
     HomePage
   ],
   providers: [

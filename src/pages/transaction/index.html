@@ -7,11 +7,6 @@
 </ion-header>
 <ion-content>
   <div class="content-container">
-    <ion-item>
-      <div class="transaction" *ngFor="let tx of (txs | async)?.result"
-       (click)="gotoDetail(tx)" class="result" >
-       {{tx.hash}}
-      </div>
-    </ion-item>
+    <transactions-page></transactions-page>
   </div>
 </ion-content>
