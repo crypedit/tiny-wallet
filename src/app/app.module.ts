@@ -10,24 +10,19 @@ import { TransactionIndex } from './../pages/transaction/index';
 import { TransactionPage } from './../pages/transaction/page';
 import { ApiProvider } from '../providers/api/api';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
+import { QueryPage } from '../pages/query/query';
+import { QueryPageModule } from '../pages/query/query.module';
 
 @NgModule({
-  declarations:
-  [
-    MyApp,
-    TransactionIndex,
-    TransactionPage,
-    HomePage
+  declarations: [MyApp, TransactionIndex, TransactionPage, HomePage],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(MyApp),
+    HttpClientModule,
+    QueryPageModule
   ],
-  imports: [BrowserModule, IonicModule.forRoot(MyApp), HttpClientModule],
   bootstrap: [IonicApp],
-  entryComponents:
-  [
-    MyApp,
-    TransactionIndex,
-    TransactionPage,
-    HomePage
-  ],
+  entryComponents: [MyApp, TransactionIndex, TransactionPage, HomePage],
   providers: [
     StatusBar,
     SplashScreen,

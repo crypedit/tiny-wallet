@@ -1,5 +1,5 @@
 import 'rxjs/Rx';
-import { Observable } from "rxjs/Observable";
+import { Observable } from 'rxjs/Observable';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ApiProvider } from '../../providers/api/api';
@@ -21,8 +21,13 @@ export class HomePage {
     this.navCtrl.push(TransactionIndex);
   }
 
+  goToQueryPage() {
+    this.navCtrl.push('query');
+  }
+
   subscribeObservable() {
-    this.balance = this.api.queryBalanceByAddress('0x5c47e30dc7f82167de8865aac3914ce927c15918')
-          .map((v)=>Ethers.utils.formatEther(Ethers.utils.bigNumberify(v.result)))
+    this.balance = this.api
+      .queryBalanceByAddress('0x5c47e30dc7f82167de8865aac3914ce927c15918')
+      .map(v => Ethers.utils.formatEther(Ethers.utils.bigNumberify(v.result)));
   }
 }
