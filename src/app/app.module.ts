@@ -12,6 +12,7 @@ import { ApiProvider } from '../providers/api/api';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
 import { QueryPageModule } from '../pages/query/query.module';
 import { ImportPageModule } from '../pages/import/import.module';
+import { AuthenticationProvider } from '../providers/authentication/authentication';
 
 @NgModule({
   declarations: [MyApp, TransactionIndex, TransactionPage, HomePage],
@@ -28,7 +29,8 @@ import { ImportPageModule } from '../pages/import/import.module';
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    ApiProvider
+    ApiProvider,
+    AuthenticationProvider
   ]
 })
 export class AppModule {}

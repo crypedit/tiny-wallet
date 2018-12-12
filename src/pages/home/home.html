@@ -6,7 +6,7 @@
           <div>我的钱包</div>
         </ion-col>
         <ion-col col-12 class="detail">
-          <div class="amount-of-coin">{{addr}} ETH</div>
+          <div>0x{{address | slice:0:20}}</div>
           <div class="amount-of-coin">{{balance | async}} ETH</div>
           <div class="amount-of-usd">10000 USD</div>
           <div class="amount-of-wallet">钱包总额</div>

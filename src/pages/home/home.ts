@@ -5,6 +5,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { ApiProvider } from '../../providers/api/api';
 import { TransactionIndex } from '../transaction/index';
 import * as Ethers from 'ethers';
+import { AuthenticationProvider } from '../../providers/authentication/authentication';
 
 @Component({
   selector: 'page-home',
@@ -14,7 +15,10 @@ export class HomePage {
   balance: Observable<number>;
   address: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams ,private api: ApiProvider) {
+  constructor(
+    public navCtrl: NavController,
+    private api: ApiProvider,
+    private auth: AuthenticationProvider) {
     this.subscribeObservable();
   }
 
@@ -35,6 +39,6 @@ export class HomePage {
       .queryBalanceByAddress('0x5c47e30dc7f82167de8865aac3914ce927c15918')
       .map(v => Ethers.utils.formatEther(Ethers.utils.bigNumberify(v.result)));
 
-    this.address = this.navParams.get('id') || "";
+    this.address = this.auth.acountAddress;
   }
 }

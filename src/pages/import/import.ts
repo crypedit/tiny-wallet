@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import keythereum from 'keythereum';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AuthenticationProvider } from '../../providers/authentication/authentication';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the QueryPage page.
@@ -8,12 +10,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
-export interface AddressDetail {
-  status: string;
-  message: string;
-  result: string;
-}
 
 @IonicPage({
   name: 'import',
@@ -29,7 +25,8 @@ export class ImportPage {
  
   constructor(
     public navCtrl: NavController,
-    public navParams: NavParams
+    public navParams: NavParams,
+    public auth: AuthenticationProvider
   ) {}
 
   ionViewDidLoad() {
@@ -41,9 +38,10 @@ export class ImportPage {
       return;
     }
     const jsonKeyObject = JSON.parse(this.keyObject)
+    this.auth.acountAddress = jsonKeyObject.address
     const privateKey = keythereum.recover(this.password, jsonKeyObject);
-    console.log(privateKey.toString())
 
+    this.navCtrl.setRoot(HomePage)
     this.navCtrl.popToRoot()
   }
 }
