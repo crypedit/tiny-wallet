@@ -6,6 +6,7 @@
           <div>我的钱包</div>
         </ion-col>
         <ion-col col-12 class="detail">
+          <div class="amount-of-coin">{{addr}} ETH</div>
           <div class="amount-of-coin">{{balance | async}} ETH</div>
           <div class="amount-of-usd">10000 USD</div>
           <div class="amount-of-wallet">钱包总额</div>
@@ -30,6 +31,9 @@
       </ion-list>
       <ion-list>
         <button ion-item (click)="goToQueryPage()">查询</button>
+      </ion-list>
+      <ion-list>
+        <button ion-item (click)="importKeyObject()">导入</button>
       </ion-list>
       <ion-list>
         <button ion-item (click)="goToSettings()">设置</button>
