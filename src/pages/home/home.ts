@@ -1,7 +1,7 @@
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { ApiProvider } from '../../providers/api/api';
 import { TransactionIndex } from '../transaction/index';
 import * as Ethers from 'ethers';
