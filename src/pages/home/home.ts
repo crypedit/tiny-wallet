@@ -34,11 +34,7 @@ export class HomePage {
   createNewWallet() {
     this.navCtrl.push('create')
   }
-
-  importKeyObject() {
-    this.navCtrl.push('import')
-  }
-
+  
   subscribeObservable() {
     this.balance = this.api
       .queryBalanceByAddress('0x5c47e30dc7f82167de8865aac3914ce927c15918')

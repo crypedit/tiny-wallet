@@ -52,6 +52,10 @@ export class CreatePage {
     this.navCtrl.popToRoot()
   }
 
+  importWallet() {
+    this.navCtrl.push('import')
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad CreatePage');
   }
