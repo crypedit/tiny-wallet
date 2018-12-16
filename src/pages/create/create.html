@@ -1,12 +1,36 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>create</ion-title>
+    <ion-title>创建钱包</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ol class="alert">
+    <li> 密码用于保护私钥和交易授权，强度非常重要 </li>
+    <li> 本钱包不存储密码，也无法帮您找回，请务必注意 </li>
+  </ol>
+ <ion-list>
+    <ion-item>
+      <ion-input placeholder="钱包名称" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="密码" type="password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="密码重复" type="password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="密码提示信息（可不填）" type="text"></ion-input>
+    </ion-item>
+    <ion-item class="condition">
+        <ion-label>我已经仔细阅读并同意 <a>服务及隐私条款</a></ion-label>
+        <ion-checkbox color="blue" checked="false"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+  <div padding>
+    <button ion-button color="primary" block (click)="void();">创建钱包</button>
+  </div>
 </ion-content>

@@ -30,6 +30,10 @@ export class HomePage {
     this.navCtrl.push('query');
   }
 
+  createNewWallet() {
+    this.navCtrl.push('create')
+  }
+
   importKeyObject() {
     this.navCtrl.push('import')
   }
