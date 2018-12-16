@@ -12,6 +12,7 @@ import { ApiProvider } from '../providers/api/api';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
 import { QueryPageModule } from '../pages/query/query.module';
 import { ImportPageModule } from '../pages/import/import.module';
+import { MnenomicPageModule } from '../pages/mnenomic/mnenomic.module';
 import { AuthenticationProvider } from '../providers/authentication/authentication';
 
 @NgModule({
@@ -21,7 +22,8 @@ import { AuthenticationProvider } from '../providers/authentication/authenticati
     IonicModule.forRoot(MyApp),
     HttpClientModule,
     QueryPageModule,
-    ImportPageModule
+    ImportPageModule,
+    MnenomicPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [MyApp, TransactionIndex, TransactionPage, HomePage],
