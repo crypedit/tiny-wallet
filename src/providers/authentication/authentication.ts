@@ -8,7 +8,8 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class AuthenticationProvider {
-  acountAddress: string = ""
+  walletName: string = ''
+  acountAddress: string = ''
   constructor() {
   }
 }

@@ -14,23 +14,23 @@
   </ol>
  <ion-list>
     <ion-item>
-      <ion-input placeholder="钱包名称" type="text"></ion-input>
+      <ion-input placeholder="钱包名称" type="text" [(ngModel)]="walletName"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="密码" type="password"></ion-input>
+      <ion-input placeholder="密码" type="password" [(ngModel)]="password"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="密码重复" type="password"></ion-input>
+      <ion-input placeholder="密码重复" type="password" [(ngModel)]="repeatPassword"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="密码提示信息（可不填）" type="text"></ion-input>
+      <ion-input placeholder="密码提示信息（可不填）" type="text" [(ngModel)]="hint"></ion-input>
     </ion-item>
     <ion-item class="condition">
         <ion-label>我已经仔细阅读并同意 <a>服务及隐私条款</a></ion-label>
-        <ion-checkbox color="blue" checked="false"></ion-checkbox>
+        <ion-checkbox color="blue" checked="false" [(ngModel)]="condition"></ion-checkbox>
     </ion-item>
   </ion-list>
   <div padding>
-    <button ion-button color="primary" block (click)="void();">创建钱包</button>
+    <button ion-button color="primary" block (click)="createWallet()">创建钱包</button>
   </div>
 </ion-content>

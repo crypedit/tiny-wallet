@@ -13,6 +13,7 @@ import { AuthenticationProvider } from '../../providers/authentication/authentic
 })
 export class HomePage {
   balance: Observable<number>;
+  walletName: string;
   address: string;
 
   constructor(
@@ -43,6 +44,7 @@ export class HomePage {
       .queryBalanceByAddress('0x5c47e30dc7f82167de8865aac3914ce927c15918')
       .map(v => Ethers.utils.formatEther(Ethers.utils.bigNumberify(v.result)));
 
+    this.walletName = this.auth.walletName;
     this.address = this.auth.acountAddress;
   }
 }
