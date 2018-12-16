@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
-import { HomePage } from '../home/home';
+import { MnenomicPage } from '../mnenomic/mnenomic';
 
 import bip39 from 'bip39'
 import hdkey from 'ethereumjs-wallet/hdkey'
@@ -37,7 +37,6 @@ export class CreatePage {
     }
 
     const mnemonic = bip39.generateMnemonic()
-    console.log(mnemonic)
 
     const seed = bip39.mnemonicToSeed(mnemonic)
     var hdWallet = hdkey.fromMasterSeed(seed)
@@ -48,8 +47,9 @@ export class CreatePage {
     this.auth.walletName = this.walletName
     this.auth.acountAddress = address1
 
-    this.navCtrl.setRoot(HomePage)
-    this.navCtrl.popToRoot()
+    this.navCtrl.push(MnenomicPage, {
+      data: mnemonic
+    });
   }
 
   importWallet() {
