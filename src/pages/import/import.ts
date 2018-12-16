@@ -38,7 +38,7 @@ export class ImportPage {
       return;
     }
     const jsonKeyObject = JSON.parse(this.keyObject)
-    this.auth.acountAddress = jsonKeyObject.address
+    this.auth.acountAddress = '0x'+jsonKeyObject.address
     const privateKey = keythereum.recover(this.password, jsonKeyObject);
 
     this.navCtrl.setRoot(HomePage)

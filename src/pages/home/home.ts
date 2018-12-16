@@ -34,13 +34,12 @@ export class HomePage {
   createNewWallet() {
     this.navCtrl.push('create')
   }
-  
-  subscribeObservable() {
-    this.balance = this.api
-      .queryBalanceByAddress('0x5c47e30dc7f82167de8865aac3914ce927c15918')
-      .map(v => Ethers.utils.formatEther(Ethers.utils.bigNumberify(v.result)));
 
-    this.walletName = this.auth.walletName;
-    this.address = this.auth.acountAddress;
+  subscribeObservable() {
+    this.walletName = this.auth.walletName || '我的钱包';
+    this.address = this.auth.acountAddress || '0x5c47e30dc7f82167de8865aac3914ce927c15918';
+    this.balance = this.api
+      .queryBalanceByAddress(this.address)
+      .map(v => Ethers.utils.formatEther(Ethers.utils.bigNumberify(v.result)));
   }
 }
