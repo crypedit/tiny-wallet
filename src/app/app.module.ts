@@ -13,6 +13,7 @@ import { HttpClientModule } from '../../node_modules/@angular/common/http';
 import { QueryPageModule } from '../pages/query/query.module';
 import { ImportPageModule } from '../pages/import/import.module';
 import { MnenomicPageModule } from '../pages/mnenomic/mnenomic.module';
+import { RememberPageModule } from '../pages/remember/remember.module';
 import { AuthenticationProvider } from '../providers/authentication/authentication';
 
 @NgModule({
@@ -23,7 +24,8 @@ import { AuthenticationProvider } from '../providers/authentication/authenticati
     HttpClientModule,
     QueryPageModule,
     ImportPageModule,
-    MnenomicPageModule
+    MnenomicPageModule,
+    RememberPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [MyApp, TransactionIndex, TransactionPage, HomePage],

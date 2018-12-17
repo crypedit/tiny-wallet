@@ -35,6 +35,10 @@ export class HomePage {
     this.navCtrl.push('create')
   }
 
+  rememberNewWallet() {
+    this.navCtrl.push('remember')
+  }
+
   subscribeObservable() {
     this.walletName = this.auth.walletName || '我的钱包';
     this.address = this.auth.acountAddress || '0x5c47e30dc7f82167de8865aac3914ce927c15918';
