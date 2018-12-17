@@ -22,6 +22,9 @@
         (click)="rm(word)">{{word}}</button>
     </ion-card-content>
   </ion-card>
-  <button ion-button [color]="unusedWords.get(word) ? 'Default' : 'light'" *ngFor="let word of mnenomics" (click)="order(word)">{{word}}
+  <button ion-button [color]="unusedWords.get(word) ? 'Default' : 'light'" *ngFor="let word of shuffledMnenomics" (click)="order(word)">{{word}}
   </button>
+  <div padding>
+      <button ion-button color="primary" block (click)="confirm()">确认</button>
+    </div>
 </ion-content>

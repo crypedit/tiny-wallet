@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-
+import { RememberPage } from '../remember/remember';
 /**
  * Generated class for the MnenomicPage page.
  *
@@ -39,6 +39,9 @@ export class MnenomicPage {
   }
 
   rememberMnenomic() {
+    this.navCtrl.push(RememberPage, {
+      data: this.mnenomic
+    });
   }
 
 }
