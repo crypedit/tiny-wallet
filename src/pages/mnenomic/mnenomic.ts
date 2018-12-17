@@ -40,8 +40,7 @@ export class MnenomicPage {
 
   rememberMnenomic() {
     this.navCtrl.push(RememberPage, {
-      data: this.mnenomic
+      data: this.mnenomic.split(' ')
     });
   }
-
 }
