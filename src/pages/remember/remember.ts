@@ -70,7 +70,7 @@ export class RememberPage {
       this.navCtrl.setRoot(HomePage)
       this.navCtrl.popToRoot()
     }
-    function equals(left: Array[string], right: Array[string]) {
+    function equals(left: Array<string>, right: Array<string>) {
       if (left.length !== right.length) {
         return false;
       }
