@@ -25,12 +25,14 @@
     <ion-item>
       <ion-input placeholder="密码提示信息（可不填）" type="text" formControlName="hint"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-checkbox color="blue" checked="false" formControlName="condition"></ion-checkbox>
+    <div class="item-block item-ios">
+      <ion-checkbox color="blue" class="terms-checkbox" formControlName="termsAndCondition">
+      </ion-checkbox>
       <ion-label>
         <p>我已经仔细阅读并同意 <a>服务及隐私条款</a></p>
       </ion-label>
-    </ion-item>
+    </div>
+
     <div padding>
       <button ion-button color="primary" block type="sumbmit" [disabled]="!wallet.valid">创建钱包</button>
     </div>

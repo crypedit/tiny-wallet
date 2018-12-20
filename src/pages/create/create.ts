@@ -29,7 +29,7 @@ export class CreatePage {
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]],
       confirmPass: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]],
       hint: [''],
-      condition: [false, Validators.requiredTrue]
+      termsAndCondition: [false, Validators.requiredTrue]
     }, { validator: this.checkPasswords });
   }
 
