@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Storage } from '@ionic/storage';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 import { MnenomicPage } from '../mnenomic/mnenomic';
 
 import bip39 from 'bip39'
 import hdkey from 'ethereumjs-wallet/hdkey'
-import ethWallet from 'ethereumjs-wallet'
 import util from 'ethereumjs-util'
 
 @IonicPage({
@@ -23,7 +23,8 @@ export class CreatePage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public auth: AuthenticationProvider,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private storage: Storage) {
     this.wallet = this.formBuilder.group({
       walletName: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]],
@@ -36,7 +37,7 @@ export class CreatePage {
   checkPasswords(group: FormGroup) {
     let password = group.controls.password.value;
     let confirmPass = group.controls.confirmPass.value;
-    return password === confirmPass ? null : { notSame: true }  
+    return password === confirmPass ? null : { notSame: true }
   }
 
   createWallet() {
@@ -44,12 +45,14 @@ export class CreatePage {
 
     const seed = bip39.mnemonicToSeed(mnemonic)
     var hdWallet = hdkey.fromMasterSeed(seed)
-    var key1 = hdWallet.derivePath("m/44'/60'/0'/0/0")
-    var address1 = util.pubToAddress(key1._hdkey._publicKey, true)
-    address1 = util.toChecksumAddress(address1.toString('hex'))
-    console.log('address is', address1)
+    var childHDWallet = hdWallet.derivePath("m/44'/60'/0'/0/0")
+    var address = util.pubToAddress(childHDWallet._hdkey._publicKey, true)
+    var checksumedAddress = util.toChecksumAddress(address.toString('hex'))
+    
     this.auth.walletName = this.wallet.get('walletName').value
-    this.auth.acountAddress = address1
+    this.auth.acountAddress = checksumedAddress
+    var keyObject = childHDWallet.getWallet().toV3(this.wallet.get('password').value)
+    this.storage.set(this.auth.walletName, keyObject)
 
     this.navCtrl.push(MnenomicPage, {
       data: mnemonic
