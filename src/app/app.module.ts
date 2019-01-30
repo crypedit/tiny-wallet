@@ -27,16 +27,19 @@ import { AuthenticationProvider } from '../providers/authentication/authenticati
     ImportPageModule,
     MnenomicPageModule,
     RememberPageModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot({
+      name: '__mydb',
+      driverOrder: ['indexeddb', 'websql', 'localstorage']
+    })
   ],
-  bootstrap: [IonicApp],
+bootstrap: [IonicApp],
   entryComponents: [MyApp, TransactionIndex, TransactionPage, HomePage],
-  providers: [
-    StatusBar,
-    SplashScreen,
-    { provide: ErrorHandler, useClass: IonicErrorHandler },
-    ApiProvider,
-    AuthenticationProvider
-  ]
+    providers: [
+      StatusBar,
+      SplashScreen,
+      { provide: ErrorHandler, useClass: IonicErrorHandler },
+      ApiProvider,
+      AuthenticationProvider
+    ]
 })
-export class AppModule {}
+export class AppModule { }
