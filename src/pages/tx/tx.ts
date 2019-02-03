@@ -5,15 +5,11 @@ import EthereumTx from 'ethereumjs-tx'
 import Web3 from 'web3'
 import { ApiProvider } from '../../providers/api/api'
 
-/**
- * Generated class for the TxPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-// const web3 = new Web3(
-//   'https://ropsten.infura.io/v3/53cca720707f40bd91bd166c011c7934'
-// )
+const web3 = new Web3(
+  new Web3.providers.HttpProvider(
+    'https://ropsten.infura.io/v3/53cca720707f40bd91bd166c011c7934'
+  )
+)
 
 @IonicPage({
   name: 'tx',
@@ -77,8 +73,16 @@ export class TxPage {
     const serializedTx = this.createTx().serialize()
     console.log(serializedTx)
     console.log(serializedTx.toString('hex'))
-    this.api
-      .sendTx(`0x${serializedTx.toString('hex')}`)
-      .subscribe(res => console.log(res))
+    // this.api
+    //   .sendTx(`0x${serializedTx.toString('hex')}`)
+    //   .subscribe(res => console.log(res))
+    console.log(web3)
+    web3.eth.sendRawTransaction(
+      `0x${serializedTx.toString('hex')}`,
+      (res, error) => {
+        console.log(res)
+        console.info(error)
+      }
+    )
   }
 }
