@@ -1,0 +1,43 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>创建钱包</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ol class="alert">
+    <li> 密码用于保护私钥和交易授权，强度非常重要 </li>
+    <li> 本钱包不存储密码，也无法帮您找回，请务必注意 </li>
+  </ol>
+  <form [formGroup]="wallet" (ngSubmit)="createWallet()">
+    <ion-item>
+      <ion-input placeholder="钱包名称" type="text" formControlName="walletName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="密码" type="password" formControlName="password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="密码重复" type="password" formControlName="confirmPass"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="密码提示信息（可不填）" type="text" formControlName="hint"></ion-input>
+    </ion-item>
+    <div class="item-block item-ios">
+      <ion-checkbox color="blue" class="terms-checkbox" formControlName="termsAndCondition">
+      </ion-checkbox>
+      <ion-label>
+        <p>我已经仔细阅读并同意 <a>服务及隐私条款</a></p>
+      </ion-label>
+    </div>
+
+    <div padding>
+      <button ion-button color="primary" block type="sumbmit" [disabled]="!wallet.valid">创建钱包</button>
+    </div>
+  </form>
+  <div padding>
+    <button ion-button color="secondary" block (click)="importWallet()">导入钱包</button>
+  </div>
+</ion-content>

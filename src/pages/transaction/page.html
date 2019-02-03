@@ -1,0 +1,9 @@
+<div class="transaction" *ngFor="let tx of page"
+      (click)="gotoDetail(tx.hash)" class="result" >
+    <ion-item>
+        <div>TX hash: {{tx.hash | slice:0:20}}</div>
+        <div>Value: {{tx.value | slice:0:5}} ETH</div>
+        <div>From: {{tx.from | slice:0:20}}</div>
+        <div>To: {{tx.to | slice:0:20}}</div>
+    </ion-item>
+</div>

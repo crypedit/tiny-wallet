@@ -1,16 +1,41 @@
+<!--
+  Generated template for the QueryPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
+
   <ion-navbar>
-    <ion-title>
-      观察钱包
-    </ion-title>
+    <ion-title>查询地址/交易</ion-title>
   </ion-navbar>
+
 </ion-header>
-<ion-content>
-  <div class="content-container">
-    <ion-item>
-      <ion-label floating>Transaction/Address</ion-label>
-      <ion-input type="text" [(ngModel)]="hash"></ion-input>
-    </ion-item>
-    <button ion-button class="btn-submit" (click)="submit()">查询</button>
-  </div>
+
+
+<ion-content padding>
+  <ion-searchbar (ionInput)="query($event)"></ion-searchbar>
+  <ion-card *ngIf="addressDetail">
+    <ion-card-header>
+      {{address}}
+    </ion-card-header>
+    <ion-card-content>
+      余额：{{addressDetail.result}} ETH
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="transactionDetail">
+    <ion-card-header>
+      {{transaction}}
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <p>区块高度：{{transactionDetail.blockNumber}}</p>
+        <p>FROM：{{transactionDetail.from}}</p>
+        <p>TO：{{transactionDetail.to}}</p>
+        <p>GAS：{{transactionDetail.gas}}</p>
+        <p>GAS价格：{{transactionDetail.gasPrice}}</p>
+        <p>价值：{{transactionDetail.value}} ETH</p>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

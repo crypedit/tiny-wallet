@@ -3,10 +3,11 @@
     <ion-row class="header">
       <ion-col col-12 class="header-content">
         <ion-col col-12 class="title">
-          <div>我的钱包</div>
+          <div>{{walletName}}</div>
         </ion-col>
         <ion-col col-12 class="detail">
-          <div class="amount-of-coin">1000 ETH</div>
+          <div>{{address | slice:0:20}}</div>
+          <div class="amount-of-coin">{{balance | async}} ETH</div>
           <div class="amount-of-usd">10000 USD</div>
           <div class="amount-of-wallet">钱包总额</div>
         </ion-col>
@@ -22,14 +23,20 @@
     </ion-row>
     <div class="navigation-list">
       <ion-list>
-        <button ion-item (click)="goTo()">转账明细</button>
+        <button ion-item (click)="goToTransactions()">转账明细</button>
       </ion-list>
       <ion-list>
         <button ion-item>我的Token</button>
         <button ion-item>P2B 10000</button>
       </ion-list>
       <ion-list>
-        <button ion-item>支付设置</button>
+        <button ion-item (click)="goToQueryPage()">查询</button>
+      </ion-list>
+      <ion-list>
+        <button ion-item (click)="createNewWallet()">创建钱包</button>
+      </ion-list>
+      <ion-list>
+        <button ion-item (click)="goToSettings()">设置</button>
       </ion-list>
     </div>
   </ion-grid>
