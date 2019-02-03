@@ -1,7 +1,7 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs/Observable";
-import 'rxjs/Rx';
+import { HttpClient } from '@angular/common/http'
+import { Injectable } from '@angular/core'
+import { Observable } from 'rxjs/Observable'
+import 'rxjs/Rx'
 
 /*
   Generated class for the ApiProvider provider.
@@ -11,16 +11,33 @@ import 'rxjs/Rx';
 */
 @Injectable()
 export class ApiProvider {
-  apikey: string;
+  apikey: string
+
   constructor(public http: HttpClient) {
-      this.apikey = 'ZZ75IX34XTAYAA21P6669BCBXX5V3TQZM1'
+    this.apikey = 'ZZ75IX34XTAYAA21P6669BCBXX5V3TQZM1'
   }
 
   queryBalanceByAddress(address: string): Observable<any> {
-      return this.http.get(`https://api.etherscan.io/api?module=account&action=balance&address=${address}&tag=latest&apikey=${this.apikey}/`);
+    return this.http.get(
+      `https://api.etherscan.io/api?module=account&action=balance&address=${address}&tag=latest&apikey=${
+        this.apikey
+      }/`
+    )
   }
 
   queryTxsByAddress(address: string): Observable<any> {
-      return this.http.get(`http://api.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&sort=asc&apikey=${this.apikey}/`);
+    return this.http.get(
+      `http://api.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&sort=asc&apikey=${
+        this.apikey
+      }/`
+    )
+  }
+
+  sendTx(txRaw: string) {
+    return this.http.get(
+      `https://api-ropsten.etherscan.io/api?module=proxy&action=eth_sendRawTransaction&hex=${txRaw}&apikey=${
+        this.apikey
+      }`
+    )
   }
 }
